@@ -81,3 +81,10 @@ a:link, a:visited {
 .icon-container img {
     width: 40px;
 }
+
+footer {
+    margin-top: 65px;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #888;
+}

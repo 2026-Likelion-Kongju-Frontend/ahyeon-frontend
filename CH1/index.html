@@ -8,9 +8,12 @@
     <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body>
+    <button id="button" onclick="changeRandomColor()" style="border: none; background: none; cursor: pointer;">
+      <img src="./src/assets/art-palette.svg" alt="배경바꾸기" />
+    </button>
     <div id="page">
     <header>
-      <img src="/src/assets/profile.png" alt="profile" />
+      <img id="profile-img" src="/src/assets/profile.png" alt="profile" />
       <div id="profile">
         <h1>안녕하세요, 저는 최아현입니다.</h1>
         <p id="profile_intro">공주대학교 소프트웨어학과에 재학 중이며, 프론트엔드 개발자를 꿈꾸고 있습니다.</p>
@@ -74,5 +77,6 @@
       <p>@choiahyeon 제작</p>
     </footer>
     </div>
+    <script src="./src/main.js"></script>
   </body>
 </html>

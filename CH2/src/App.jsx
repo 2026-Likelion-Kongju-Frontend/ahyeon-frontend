@@ -5,8 +5,8 @@ import ProductList from "./components/ProductList.jsx";
 function App () {
   return (
     <div>
-      <Header></Header>
-      <ProductList></ProductList>
+      <Header name={"최아현"}/>
+      <ProductList/>
     </div>
   )
 }

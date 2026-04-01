@@ -9,8 +9,8 @@ function Header({name}) {
         <button>
           <img src={Alarm} alt="종" />
         </button>
-        <button>{name}</button>
-        <button>로그아웃</button>
+        <button className="name">{name}</button>
+        <button className="login">로그아웃</button>
       </div>
     </div>
 

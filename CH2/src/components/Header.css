@@ -20,5 +20,15 @@ button {
     border: none;
     background-color: transparent;
     justify-content: space-around;
+
 }
 
+.name {
+
+    font-weight: 600;
+}
+
+.login {
+    font-weight: 400;
+    color: #7E7E7E;
+}

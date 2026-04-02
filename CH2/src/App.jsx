@@ -8,7 +8,7 @@ function App () {
       <Header name={"최아현"}/>
       <ProductList/>
     </div>
-  )
+  );
 }
 
 export default App;

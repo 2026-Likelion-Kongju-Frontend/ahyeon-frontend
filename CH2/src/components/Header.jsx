@@ -13,8 +13,7 @@ function Header({name}) {
         <button className="login">로그아웃</button>
       </div>
     </div>
-
-  )
+  );
 }
 
 export default Header;

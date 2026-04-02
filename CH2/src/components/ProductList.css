@@ -1,4 +1,22 @@
-.productList {
+.main {
     background-color: #EFF1F0;
     height: 100vh;
 }
+
+.productList {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr ;
+    justify-items: center;;
+}
+
+h2 {
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 0;
+}
+
+.highlight {
+    color: #49684A;
+}
+
+

@@ -1,0 +1,12 @@
+.productCard {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-img {
+    width: 100px;
+}
+
+.like-img {
+    width: 30px;
+}

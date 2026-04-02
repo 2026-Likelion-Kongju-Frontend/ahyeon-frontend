@@ -3,9 +3,9 @@
     display: flex;
     justify-content: space-between;
     padding: 16px;
-    position: fixed;
+    position: sticky;
+    top: 0;
     width: 100%;
-    z-index: 10;
     box-sizing: border-box;
 }
 

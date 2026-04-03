@@ -5,6 +5,11 @@
 
 .product-img {
     width: 100%;
+    transition: transform 0.3s ease;
+}
+
+.product-img:hover {
+    transform: scale(1.05);
 }
 
 .product-info {

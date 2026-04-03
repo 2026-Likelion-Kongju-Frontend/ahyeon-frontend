@@ -1,18 +1,19 @@
 .main {
-    background-color: #EFF1F0;
-    height: 100vh;
+    height: 100%;
+    width: 65%;
+    margin: 100px auto;
 }
 
 .productList {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr ;
-    justify-items: center;;
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
+    gap: 50px;
 }
 
 h2 {
     font-weight: 600;
-    font-size: 20px;
-    margin-bottom: 0;
+    font-size: 25px;
+    margin-bottom: 35px;
 }
 
 .highlight {

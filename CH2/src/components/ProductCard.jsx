@@ -9,8 +9,7 @@ function ProductCard ({image, brand, name, price, discountRate, isLiked}) {
       <div>
         <p>{brand}</p>
         <p>{name}</p>
-        {discountRate && <p>{discountRate}%</p>}
-        <p>{price}</p>
+        <p>{discountRate && <span>{discountRate}%</span>} {price}</p>
       </div>
       <img className={"like-img"} src={isLiked ? Heart_active : Heart} alt="좋아요" />
     </div>

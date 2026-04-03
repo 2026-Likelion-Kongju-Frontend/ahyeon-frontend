@@ -6,12 +6,14 @@ function ProductCard ({image, brand, name, price, discountRate, isLiked}) {
   return (
     <div className={"productCard"}>
       <img className={"product-img"} src={image} alt="상품이미지" />
-      <div>
-        <p>{brand}</p>
-        <p>{name}</p>
-        <p>{discountRate && <span>{discountRate}%</span>} {price}</p>
-      </div>
-      <img className={"like-img"} src={isLiked ? Heart_active : Heart} alt="좋아요" />
+      <div className={"product-info"}>
+        <div className={"product-details"}>
+          <p className={"product-brand"}>{brand}</p>
+          <p className={"product-name"}>{name}</p>
+          <p className={"product-price"}>{discountRate && <span className={"discountRate"}>{discountRate}%</span>} {price}</p>
+        </div>
+        <img className={"like-img"} src={isLiked ? Heart_active : Heart} alt="좋아요" />
+        </div>
     </div>
   );
 }

@@ -7,6 +7,36 @@
     width: 100%;
 }
 
+.product-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-details {
+    padding: 15px;
+}
+
+.product-brand {
+    font-size: 13px;
+}
+
+.product-name {
+    margin-top: 10px;
+    font-size: 17px;
+}
+
+.discountRate {
+    color: #2F8000;
+}
+
+.product-price {
+    font-size: 25px;
+    font-weight: 600;
+    margin-top: 15px;
+}
+
 .like-img {
-    width: 30px;
+    width: 25px;
+    height: 25px;
+    padding: 10px 10px 0 0;
 }

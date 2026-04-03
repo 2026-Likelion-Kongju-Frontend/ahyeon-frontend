@@ -17,7 +17,7 @@
 }
 
 .product-brand {
-    font-size: 13px;
+    font-size: 14px;
 }
 
 .product-name {
@@ -35,8 +35,12 @@
     margin-top: 15px;
 }
 
-.like-img {
+.like-button {
     width: 25px;
     height: 25px;
     padding: 10px 10px 0 0;
+}
+
+.like-button:active {
+    transform: scale(1.1);
 }

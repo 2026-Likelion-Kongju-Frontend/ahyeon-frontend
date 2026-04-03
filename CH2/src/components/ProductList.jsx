@@ -18,7 +18,6 @@ const products = [
   { id: 12, image: ("src/assets/Rectangle 4-11.png"), brand: "뷰뷰브랜드", name: "데님 원피스", price: 48000, discountRate: 15, isLiked: false },
 ];
 
-
 function ProductList() {
   return (
     <div className="main">

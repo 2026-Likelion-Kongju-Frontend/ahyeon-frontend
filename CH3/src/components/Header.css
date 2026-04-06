@@ -1,0 +1,38 @@
+.header {
+    background-color: #F8F8F8;
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 10;
+}
+
+h1 {
+    color: #49684A;
+    font-size: 45px;
+    font-weight: 800;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+}
+
+button {
+    border: none;
+    background-color: transparent;
+    justify-content: space-around;
+}
+
+.name {
+
+    font-weight: 600;
+}
+
+.login {
+    font-weight: 400;
+    color: #7E7E7E;
+}

@@ -1,0 +1,159 @@
+.ProductDetail {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    width: 50%;
+    margin: 60px auto;
+}
+
+.ProductDetail-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.ProductDetail-right {
+    background-color: white;
+    padding: 30px 20px;
+    height: 75%;
+}
+
+.ProductDetail-info {
+    color: #7E7E7E;
+    margin: 20px 0;
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    row-gap: 15px;
+}
+
+.left-buttons {
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.selected-btn {
+    background-color: white;
+    flex: 1;
+    padding: 8px 0;
+    font-size: 15px;
+}
+
+.unselected-btn {
+    color: #7E7E7E;
+    background-color: #e9e9e9;
+    flex: 1;
+    padding: 8px 0;
+    font-size: 15px;
+}
+
+.ProductDetail-description {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.product-description-img {
+    margin-top: 20px;
+    width: 90%;
+}
+
+.ProductDetail-brand {
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.category {
+    font-size: 16px;
+    color: #7E7E7E;
+    margin-bottom: 20px;
+}
+
+.ProductDetail-name {
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.tags {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.tag {
+    background-color: #e9e9e9;
+    color: #7E7E7E;
+    font-size: 15px;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.reviews-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.reviews {
+    color: #7E7E7E;
+    text-decoration: underline #7E7E7E;
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: #7E7E7E;
+    font-size: 20px;
+    margin-top: 35px;
+}
+
+.price-container {
+    display: flex;
+    justify-content: space-between;
+    font-size: 30px;
+    font-weight: 600;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+.right-buttons {
+    display: flex;
+    gap: 10px;
+    margin: 35px 0;
+}
+
+.cart-btn {
+    border: 2px solid #2F8000;
+    flex: 1;
+    padding: 15px 0;
+    font-size: 25px;
+    font-weight: 600;
+    border-radius: 5px;
+}
+
+.buy-btn {
+    border: 2px solid #2F8000;
+    background-color: #2F8000;
+    color: white;
+    flex: 1;
+    font-size: 25px;
+    font-weight: 600;
+    border-radius: 5px;
+}
+
+.free-delivery {
+    margin: 30px 0;
+}
+
+.special-delivery {
+    color: #7E7E7E;
+    margin-top: 5px;
+}
+
+.delivery-schedule {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 30px;
+}

@@ -12,22 +12,14 @@ function ProductDetail () {
       <div className={"ProductDetail-left"}>
         <img src={product.image} alt="상품이미지" />
         <div className={"ProductDetail-info"}>
-          <div>
-            <span>품번</span>
-            <span>000-000-000</span>
-          </div>
-          <div>
-            <span>성별</span>
-            <span>여</span>
-          </div>
-          <div>
-            <span>시즌</span>
-            <span>2026</span>
-          </div>
-          <div>
-            <span>누적 판매</span>
-            <span>1.3천 개 이상</span>
-          </div>
+          <span>품번</span>
+          <span>000-000-000</span>
+          <span>성별</span>
+          <span>여</span>
+          <span>시즌</span>
+          <span>2026</span>
+          <span>누적 판매</span>
+          <span>1.3천 개 이상</span>
         </div>
         <div className={"left-buttons"}>
           <button className={"selected-btn"}>정보</button>
@@ -36,7 +28,7 @@ function ProductDetail () {
           <button className={"unselected-btn"}>문의</button>
         </div>
         <div className={"ProductDetail-description"}>
-          <img src={product.descriptionImage} alt="상품설명이미지" />
+          <img className={"product-description-img"} src={product.descriptionImage} alt="상품설명이미지" />
         </div>
       </div>
       <div className={"ProductDetail-right"}>
@@ -48,25 +40,31 @@ function ProductDetail () {
           <span className={"tag"}>무료배송</span>
           <span className={"tag"}>LOGO단독</span>
         </div>
-        <div>
+        <div className={"reviews-container"}>
           <img src = {star} alt="별점" />
           <span>4.8</span>
           <span className={"reviews"}>후기 73개</span>
         </div>
-        <p>{product.originalPrice}</p>
-        <p>{product.discountRate > 0 && <span className={"discountRate"}>{product.discountRate}%</span>} {product.price.toLocaleString()}</p>
-        <img src = {Heart} alt="하트" />
-        <p>사이즈 선택</p>
+        <p className={"original-price"}>{product.originalPrice.toLocaleString()}</p>
+        <div className={"price-container"}>
+          <p>{product.discountRate > 0 && <span className={"discountRate"}>{product.discountRate}%</span>} {product.price.toLocaleString()}</p>
+          <img src = {Heart} alt="하트" />
+        </div>
+        <option value="">사이즈 선택</option>
         <div className={"right-buttons"}>
-          <button>장바구니</button>
-          <button>구매하기</button>
+          <button className={"cart-btn"}>장바구니</button>
+          <button className={"buy-btn"}>구매하기</button>
         </div>
         <hr />
-        <p>LOGO 회원은 전 품목 무료배송</p>
-        <span>(일부 상품 및 도서 산간 지역 제외)</span>
+        <div className={"free-delivery"}>
+          <p>LOGO 회원은 전 품목 무료배송</p>
+          <p className={"special-delivery"}>(일부 상품 및 도서 산간 지역 제외)</p>
+        </div>
         <hr />
-        <p>03.26 (목) 도착 예정</p>
-        <p>결제 3일 이내 발송 예정</p>
+        <div className={"delivery-schedule"}>
+          <p>03.26 (목) 도착 예정</p>
+          <p>결제 3일 이내 발송 예정</p>
+        </div>
       </div>
     </div>
   );

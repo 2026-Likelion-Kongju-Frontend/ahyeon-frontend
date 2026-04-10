@@ -13,7 +13,7 @@ function ProductCard ({image, brand, name, price, discountRate, isLiked}) {
         <div className={"product-details"}>
           <p className={"product-brand"}>{brand}</p>
           <p className={"product-name"}>{name}</p>
-          <p className={"product-price"}>{discountRate && <span className={"discountRate"}>{discountRate}%</span>} {price.toLocaleString()}</p>
+          <p className={"product-price"}>{discountRate > 0 && <span className={"discountRate"}>{discountRate}%</span>} {price.toLocaleString()}</p>
         </div>
         <button className={"like-button"} onClick={() => {setLiked(!Liked)}}>
           <img src={Liked ? Heart_active : Heart} alt="좋아요" />

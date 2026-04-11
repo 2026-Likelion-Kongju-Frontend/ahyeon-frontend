@@ -1,13 +1,19 @@
+import { useNavigate } from 'react-router-dom';
 import './ProductCard.css';
 import Heart from '../assets/heart.png';
 import Heart_active from '../assets/Heart_active.png';
 import { useState } from 'react';
 
-function ProductCard ({image, brand, name, price, discountRate, isLiked}) {
+function ProductCard ({id, image, brand, name, price, discountRate, isLiked}) {
   const [Liked, setLiked] = useState(isLiked);
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/detail/${id}`);
+  };
 
   return (
-    <div className={"productCard"}>
+    <div className={"productCard"} onClick={handleCardClick}>
       <img className={"product-img"} src={image} alt="상품이미지" />
       <div className={"product-info"}>
         <div className={"product-details"}>

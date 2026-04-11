@@ -1,10 +1,14 @@
+import { Link } from 'react-router-dom';
+
 import './Header.css'
 import Alarm from '../assets/alarm.png'
 
 function Header({name}) {
   return (
     <div className="header">
-      <h1>LOGO</h1>
+      <Link to={"/"} className={"LOGO-link"}>
+        <h1>LOGO</h1>
+      </Link>
       <div className="menu">
         <button>
           <img src={Alarm} alt="종" />

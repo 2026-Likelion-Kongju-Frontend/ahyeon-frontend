@@ -3,6 +3,7 @@ import './ProductDetail.css';
 import { products } from '../data/MockData.js';
 import star from '../assets/star.svg';
 import Heart from '../assets/heart.png';
+import Heart_active from '../assets/Heart_active.png';
 import { useState } from 'react';
 
 function ProductDetail () {
@@ -10,6 +11,7 @@ function ProductDetail () {
   const product = products.find((p) => String(p.id) === String(id));  const [selectedSize, setSelectedSize] = useState("");
   const [selectedSizes, setSelectedSizes] = useState([]);
   const totalQuantity = selectedSizes.reduce((acc, cur) => acc + cur.quan, 0);
+  const [Liked, setLiked] = useState(products.isLiked);
 
   const handleSizeChange = (e) => {
     const newSize = e.target.value;
@@ -35,7 +37,7 @@ function ProductDetail () {
     setSelectedSizes(selectedSizes.map(item => {
       if (item.optionName === optionName) {
         const newQuan = item.quan + direction;
-        return { ...item, quan: newQuan < 1 ? 1 : newQuan }; // 최소 1개 유지
+        return { ...item, quan: newQuan < 1 ? 1 : newQuan };
       }
       return item;
     }));
@@ -119,7 +121,9 @@ function ProductDetail () {
         <p className={"original-price"}>{product.originalPrice.toLocaleString()}</p>
         <div className={"price-container"}>
           <p>{product.discountRate > 0 && <span className={"discountRate"}>{product.discountRate}%</span>} {product.price.toLocaleString()}</p>
-          <img src = {Heart} alt="하트" />
+          <button onClick={() => {setLiked(!Liked)}}>
+            <img src={Liked ? Heart_active : Heart} alt="좋아요" />
+          </button>
         </div>
         <div>
           <select value={selectedSize} onChange={handleSizeChange} className="size-select">

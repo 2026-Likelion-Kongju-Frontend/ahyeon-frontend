@@ -15,7 +15,6 @@
 .ProductDetail-right {
     background-color: white;
     padding: 30px 20px;
-    height: 75%;
 }
 
 .ProductDetail-info {
@@ -115,6 +114,67 @@
     font-weight: 600;
     margin-top: 15px;
     margin-bottom: 30px;
+}
+
+.size-select {
+    color: #7E7E7E;
+    width: 100%;
+    border: 1px solid #7E7E7E;
+    font-size: 16px;
+    padding: 3px;
+}
+
+.item-info {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0 10px 0;
+    padding-top: 15px;
+    border-top: 1px solid black;
+}
+
+.arrive-schedule {
+    color: #7E7E7E;
+    font-size: 15px;
+}
+
+.quantity-area {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+}
+
+.quantity-box {
+    display: flex;
+    border: 1px solid #7E7E7E;
+}
+
+.minus-btn {
+    border-right: 1px solid #7E7E7E;
+    padding: 10px 5px;
+}
+
+.plus-btn {
+    border-left: 1px solid #7E7E7E;
+    padding: 10px 5px;
+}
+
+.quantity {
+    padding: 10px 15px;
+}
+
+.item-subtotal {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.total-price-area {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    border-top: 1px solid black;
+    padding-top: 15px;
 }
 
 .right-buttons {

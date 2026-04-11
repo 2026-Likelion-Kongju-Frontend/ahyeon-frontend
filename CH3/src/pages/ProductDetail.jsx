@@ -49,8 +49,28 @@ function ProductDetail () {
       alert("사이즈를 선택해 주세요.");
       return;
     }
-    console.log("장바구니 전송 데이터:", selectedSizes);
-    alert("장바구니에 상품을 담았습니다.");
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    selectedSizes.forEach((selectedItem) => {
+      const existingItem = cart.find(
+        (item) => item.id === product.id && item.optionName === selectedItem.optionName
+      );
+
+      if (existingItem) {
+        existingItem.quan += selectedItem.quan;
+      } else {
+        cart.push({
+          id: product.id,
+          optionName: selectedItem.optionName,
+          quan: selectedItem.quan
+        });
+      }
+    });
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    setSelectedSizes([]);
   };
 
   const totalAmount = selectedSizes.reduce(

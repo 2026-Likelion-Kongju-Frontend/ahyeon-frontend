@@ -118,9 +118,9 @@ function ProductDetail () {
                   <span className={"arrive-schedule"}>03.26 (목) 도착 예정</span>
                   <div className={"quantity-area"}>
                     <div className="quantity-box">
-                      <button className={"minus-btn"} onClick={() => handleQuantityChange(item.optionName, -1)}>-</button>
+                      <button className={"minus-btn"} onClick={() => handleQuantityChange(item.optionName, -1)} disabled={item.quan <= 1}>-</button>
                       <span className={"quantity"}>{item.quan}</span>
-                      <button className={"plus-btn"} onClick={() => handleQuantityChange(item.optionName, 1)}>+</button>
+                      <button className={"plus-btn"} onClick={() => handleQuantityChange(item.optionName, 1)} disabled={item.quan >= 9}>+</button>
                     </div>
                     <span className="item-subtotal">{(product.price * item.quan).toLocaleString()}</span>
                   </div>

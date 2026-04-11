@@ -1,3 +1,4 @@
+import { useParams } from 'react-router-dom';
 import './ProductDetail.css';
 import { products } from '../data/MockData.js';
 import star from '../assets/star.svg';
@@ -5,8 +6,8 @@ import Heart from '../assets/heart.png';
 import { useState } from 'react';
 
 function ProductDetail () {
-  const product = products[0];
-  const [selectedSize, setSelectedSize] = useState("");
+  const { id } = useParams();
+  const product = products.find((p) => String(p.id) === String(id));  const [selectedSize, setSelectedSize] = useState("");
   const [selectedSizes, setSelectedSizes] = useState([]);
   const totalQuantity = selectedSizes.reduce((acc, cur) => acc + cur.quan, 0);
 

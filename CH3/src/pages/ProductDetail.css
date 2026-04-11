@@ -16,6 +16,8 @@
 .ProductDetail-right {
     background-color: white;
     padding: 30px 20px;
+    position: sticky;
+    top: 100px;
 }
 
 .ProductDetail-info {

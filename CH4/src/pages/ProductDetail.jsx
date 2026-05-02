@@ -1,11 +1,10 @@
 import { useParams } from 'react-router-dom';
-import './ProductDetail.css';
-// import { products } from '../data/MockData.js';
+import { useState, useEffect } from 'react';
+import { productApi } from '../api/index.js';
 import star from '../assets/star.svg';
 import Heart from '../assets/heart.png';
 import Heart_active from '../assets/Heart_active.png';
-import { useState, useEffect } from 'react';
-import { productApi } from '../api/index.js';
+import './ProductDetail.css';
 
 const BASE_URL = import.meta.env.VITE_API_URL;
 
@@ -71,24 +70,30 @@ function ProductDetail () {
     setSelectedSizes(selectedSizes.filter(item => item.optionName !== optionName));
   };
 
-  const handleCartClick = () => {
+  const handleCartClick = async () => {
     if (selectedSizes.length === 0) {
       alert("사이즈를 선택해 주세요.");
       return;
     }
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    selectedSizes.forEach((selectedItem) => {
-      const existingItem = cart.find(
-        (item) => item.id === product.id && item.optionName === selectedItem.optionName
-      );
-      if (existingItem) {
-        existingItem.quan += selectedItem.quan;
-      } else {
-        cart.push({ id: product.id, optionName: selectedItem.optionName, quan: selectedItem.quan });
+
+    try {
+      for (const item of selectedSizes) {
+        const result = await productApi.addToCart(
+          product.id,
+          item.optionName,
+          item.quan
+        );
+
+        if (!result.success) {
+          throw new Error(result.message || "장바구니 담기 실패");
+        }
       }
-    });
-    localStorage.setItem('cart', JSON.stringify(cart));
-    setSelectedSizes([]);
+      alert("장바구니에 성공적으로 담겼습니다.");
+      setSelectedSizes([]);
+    } catch (err) {
+      console.error(err);
+      alert("장바구니 담기 중 오류가 발생했습니다.");
+    }
   };
 
   const totalAmount = selectedSizes.reduce(
@@ -137,7 +142,7 @@ function ProductDetail () {
           <span>4.8</span>
           <span className={"reviews"}>후기 73개</span>
         </div>
-        <p className={"original-price"}>{product.price.toLocaleString()}</p>
+        <p className={"original-price"}>{(product.price * 1.2).toLocaleString()}</p>
         <div className={"price-container"}>
           <p>{product.discountRate > 0 && <span className={"discountRate"}>{product.discountRate}%</span>} {product.price.toLocaleString()}</p>
           <button onClick={() => {setLiked(!Liked)}}>

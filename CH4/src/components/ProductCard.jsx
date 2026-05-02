@@ -9,6 +9,7 @@ const BASE_URL = import.meta.env.VITE_API_URL;
 
 function ProductCard ({ product }) {
   const { id, image, brand, name, price, discountRate, isLiked } = product;
+
   const [Liked, setLiked] = useState(isLiked);
   const navigate = useNavigate();
 
@@ -37,7 +38,7 @@ function ProductCard ({ product }) {
           <p className="product-name">{name}</p>
           <p className="product-price">
             {discountRate > 0 && <span className="discountRate">{discountRate}%</span>}
-            {price.toLocaleString()}원
+            {price?.toLocaleString()}원
           </p>
         </div>
         <button className="like-button" onClick={handleLikeClick}>

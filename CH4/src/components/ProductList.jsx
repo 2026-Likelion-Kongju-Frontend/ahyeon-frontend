@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
-import './ProductList.css'
-import ProductCard from "./ProductCard.jsx";
 // import {products} from '../data/MockData.js';
 import { productApi } from '../api/index.js';
+import ProductCard from "./ProductCard.jsx";
+import './ProductList.css'
 
 function ProductList() {
   const [productList, setProductList] = useState([]);
@@ -40,7 +40,7 @@ function ProductList() {
         {productList.map((product) => (
           <ProductCard
             key={product.id}
-            {...product}
+            product={product}
           />
         ))}
       </div>

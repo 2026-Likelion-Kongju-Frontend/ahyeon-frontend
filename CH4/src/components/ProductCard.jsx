@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { productApi } from '../api/index.js';
 import './ProductCard.css';
 import Heart from '../assets/heart.png';
 import Heart_active from '../assets/Heart_active.png';
@@ -6,7 +7,8 @@ import { useState } from 'react';
 
 const BASE_URL = import.meta.env.VITE_API_URL;
 
-function ProductCard ({id, image, brand, name, price, discountRate, isLiked}) {
+function ProductCard ({ product }) {
+  const { id, image, brand, name, price, discountRate, isLiked } = product;
   const [Liked, setLiked] = useState(isLiked);
   const navigate = useNavigate();
 
@@ -14,9 +16,16 @@ function ProductCard ({id, image, brand, name, price, discountRate, isLiked}) {
     navigate(`/detail/${id}`);
   };
 
-  const handleLikeClick = (e) => {
+  const handleLikeClick = async (e) => {
     e.stopPropagation();
-    setLiked(!Liked);
+    try {
+      const result = await productApi.updateLike(id);
+      if (result.success) {
+        setLiked(result.data.isLiked);
+      }
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (

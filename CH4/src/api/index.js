@@ -30,4 +30,12 @@ export const productApi = {
     });
     return res.json();
   },
+
+  updateLike: async (productId) => {
+    const res = await fetch(`${BASE_URL}/products/${productId}/like`, {
+      method: "PATCH",
+      credentials: "include",
+    });
+    return res.json();
+  },
 };

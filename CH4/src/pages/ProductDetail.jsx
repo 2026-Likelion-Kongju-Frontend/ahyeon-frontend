@@ -96,6 +96,22 @@ function ProductDetail () {
     }
   };
 
+  const handleLikeClick = async () => {
+    try {
+      const result = await productApi.updateLike(productId);
+
+      if (result.success) {
+        // 서버 응답의 결과값(true/false)을 직접 상태에 반영합니다.
+        setLiked(result.data.isLiked);
+      } else {
+        alert("좋아요 처리에 실패했습니다.");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("서버와 통신 중 오류가 발생했습니다.");
+    }
+  };
+
   const totalAmount = selectedSizes.reduce(
     (acc, cur) => acc + (product?.price * cur.quan), 0
   );
@@ -145,7 +161,7 @@ function ProductDetail () {
         <p className={"original-price"}>{(product.price * 1.2).toLocaleString()}</p>
         <div className={"price-container"}>
           <p>{product.discountRate > 0 && <span className={"discountRate"}>{product.discountRate}%</span>} {product.price.toLocaleString()}</p>
-          <button onClick={() => {setLiked(!Liked)}}>
+          <button onClick={handleLikeClick}>
             <img src={Liked ? Heart_active : Heart} alt="좋아요" />
           </button>
         </div>

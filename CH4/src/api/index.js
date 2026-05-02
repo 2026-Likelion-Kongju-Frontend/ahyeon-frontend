@@ -7,4 +7,10 @@ export const productApi = {
     });
     return res.json();
   },
+  getProductDetail: async (productId) => {
+    const res = await fetch(`${BASE_URL}/products/${productId}`, {
+      credentials: "include",
+    });
+    return res.json();
+  },
 };

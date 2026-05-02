@@ -1,35 +1,59 @@
 import { useParams } from 'react-router-dom';
 import './ProductDetail.css';
-import { products } from '../data/MockData.js';
+// import { products } from '../data/MockData.js';
 import star from '../assets/star.svg';
 import Heart from '../assets/heart.png';
 import Heart_active from '../assets/Heart_active.png';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { productApi } from '../api/index.js';
+
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 function ProductDetail () {
-  const { id } = useParams();
-  const product = products.find((p) => String(p.id) === String(id));  const [selectedSize, setSelectedSize] = useState("");
+  const { id: productId } = useParams();
+
+  const [product, setProduct] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const [selectedSize, setSelectedSize] = useState("");
   const [selectedSizes, setSelectedSizes] = useState([]);
+  const [Liked, setLiked] = useState(false);
+
+  useEffect(() => {
+    const loadProductDetail = async () => {
+      try {
+        setIsLoading(true);
+        setError(null);
+        const result = await productApi.getProductDetail(productId);
+        if (result.success) {
+          setProduct(result.data);
+          setLiked(result.data.isLiked);
+        } else {
+          setError("상품 정보를 찾을 수 없습니다.");
+        }
+      } catch {
+        setError("서버와 통신 중 오류가 발생했습니다.");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    if (productId) loadProductDetail();
+  }, [productId]);
+
   const totalQuantity = selectedSizes.reduce((acc, cur) => acc + cur.quan, 0);
-  const [Liked, setLiked] = useState(products.isLiked);
 
   const handleSizeChange = (e) => {
     const newSize = e.target.value;
     if (!newSize) return;
-
     const isExist = selectedSizes.find((item) => item.optionName === newSize);
-
     if (isExist) {
       setSelectedSizes(selectedSizes.map(item =>
-        item.optionName === newSize
-          ? { ...item, quan: item.quan + 1 }
-          : item
+        item.optionName === newSize ? { ...item, quan: item.quan + 1 } : item
       ));
     } else {
-      const selected = { optionName: newSize, quan: 1 };
-      setSelectedSizes([...selectedSizes, selected]);
+      setSelectedSizes([...selectedSizes, { optionName: newSize, quan: 1 }]);
     }
-
     setSelectedSize("");
   };
 
@@ -52,38 +76,33 @@ function ProductDetail () {
       alert("사이즈를 선택해 주세요.");
       return;
     }
-
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
     selectedSizes.forEach((selectedItem) => {
       const existingItem = cart.find(
         (item) => item.id === product.id && item.optionName === selectedItem.optionName
       );
-
       if (existingItem) {
         existingItem.quan += selectedItem.quan;
       } else {
-        cart.push({
-          id: product.id,
-          optionName: selectedItem.optionName,
-          quan: selectedItem.quan
-        });
+        cart.push({ id: product.id, optionName: selectedItem.optionName, quan: selectedItem.quan });
       }
     });
-
     localStorage.setItem('cart', JSON.stringify(cart));
-
     setSelectedSizes([]);
   };
 
   const totalAmount = selectedSizes.reduce(
-    (acc, cur) => acc + (product.price * cur.quan), 0
+    (acc, cur) => acc + (product?.price * cur.quan), 0
   );
+
+  if (isLoading) return <div className="loading">상품 상세 정보를 불러오는 중...</div>;
+  if (error) return <div className="error">{error}</div>;
+  if (!product) return null;
 
   return (
     <div className={"ProductDetail"}>
       <div className={"ProductDetail-left"}>
-        <img src={product.image} alt="상품이미지" />
+        <img src={`${BASE_URL}${product.image}`} alt="상품이미지" />
         <div className={"ProductDetail-info"}>
           <span>품번</span>
           <span>000-000-000</span>
@@ -101,7 +120,7 @@ function ProductDetail () {
           <button className={"unselected-btn"}>문의</button>
         </div>
         <div className={"ProductDetail-description"}>
-          <img className={"product-description-img"} src={product.descriptionImage} alt="상품설명이미지" />
+          <img className={"product-description-img"} src={`${BASE_URL}${product.descriptionImage}`} alt="상품설명이미지" />
         </div>
       </div>
       <div className={"ProductDetail-right"}>
@@ -114,11 +133,11 @@ function ProductDetail () {
           <span className={"tag"}>LOGO단독</span>
         </div>
         <div className={"reviews-container"}>
-          <img src = {star} alt="별점" />
+          <img src={star} alt="별점" />
           <span>4.8</span>
           <span className={"reviews"}>후기 73개</span>
         </div>
-        <p className={"original-price"}>{product.originalPrice.toLocaleString()}</p>
+        <p className={"original-price"}>{product.price.toLocaleString()}</p>
         <div className={"price-container"}>
           <p>{product.discountRate > 0 && <span className={"discountRate"}>{product.discountRate}%</span>} {product.price.toLocaleString()}</p>
           <button onClick={() => {setLiked(!Liked)}}>
